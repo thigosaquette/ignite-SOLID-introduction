@@ -3,8 +3,47 @@
   "info": {
     "title": "User manager api",
     "description": "Documentation exercise",
-    "version": "0.0.1"
+    "version": "0.0.1",
+    "contact": {
+      "email": "email@email.com"
+    }
   },
-  "path": {
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "",
+        "description": "Create a user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Anha",
+                  "description": "Foster@email.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create a new user"
+          },
+          "500": {
+            "description": "This email already exists."
+          }
+        }
+      }
+    }
   }
 }
