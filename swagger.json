@@ -43,6 +43,133 @@
             "description": "This email already exists."
           }
         }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "",
+        "description": "List all user if requested by a admin user",
+        "parameters": [{
+          "in": "header",
+          "name": "user_id",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "required": "true"
+        }],
+        "responses": {
+          "201": {
+            "description": "List all users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "user_id": {
+                        "type":"string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "User not found | User is not an admin"
+          }
+        }
+      }
+    },
+    "users/:user_id/admin": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "",
+        "description": "Update user admin status",
+        "parameters": [{
+          "in": "path",
+          "name": "user_id",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "required": "true"
+        }],
+        "responses": {
+          "201": {
+            "description": "Update admin status with success"
+          },
+          "500": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/users/:user_id": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "",
+        "description": "Show de user search by informed id",
+        "parameters": [{
+          "in": "path",
+          "name": "user_id",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "required": "true"
+        }],
+        "responses": {
+          "201": {
+            "description": "User found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type":"string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "User not found"
+          }
+        }
       }
     }
   }
