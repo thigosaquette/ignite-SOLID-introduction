@@ -1,0 +1,10 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "User manager api",
+    "description": "Documentation exercise",
+    "version": "0.0.1"
+  },
+  "path": {
+  }
+}
